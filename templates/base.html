@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Aplicación Flask{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Inicio</a></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('post_bp.list_posts') }}">Posts</a></li>
+            <li><a href="{{ url_for('post_bp.create_post') }}">Crear Post</a></li>
+        </ul>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>S

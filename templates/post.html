@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+    <small>Creado el: {{ post.created }}</small>
+    <p>
+        <a href="{{ url_for('post_bp.update_post', post_id=post.id) }}">Editar</a>
+        <form action="{{ url_for('post_bp.delete_post', post_id=post.id) }}" method="post" style="display:inline;">
+            <button type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar este post?');">Eliminar</button>
+        </form>
+    </p>
+    <p><a href="{{ url_for('post_bp.list_posts') }}">Volver a la lista de posts</a></p>
+{% endblock %}
