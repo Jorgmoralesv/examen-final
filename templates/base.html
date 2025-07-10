@@ -9,18 +9,19 @@
 <body>
     <nav>
         <ul>
-            <li><a href="{{ url_for('index') }}">Inicio</a></li>
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('post_bp.list_posts') }}">Posts</a></li>
-            <li><a href="{{ url_for('post_bp.create_post') }}">Crear Post</a></li>
+            <li><a href="{{ url_for('index') }}">Inicio Principal</a></li>
+            <li><a href="{{ url_for('home') }}">Página de Inicio</a></li>
+            <li><a href="{{ url_for('post_bp.list_posts') }}">Ver Todos los Posts</a></li>
+            <li><a href="{{ url_for('post_bp.create_post') }}">Crear Nuevo Post</a></li>
         </ul>
     </nav>
-    <hr>
+    <hr> {# Línea divisoria simple #}
     <div class="content">
         {% block content %}{% endblock %}
     </div>
+
     {% if error %}
-        <p style="color: red;">{{ error }}</p>
+        <p style="color: red; border: 1px solid red; padding: 10px; background-color: #ffe0e0; margin: 10px;">{{ error }}</p>
     {% endif %}
 </body>
-</html>S
+</html>

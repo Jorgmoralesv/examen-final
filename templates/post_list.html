@@ -1,24 +1,30 @@
 {% extends 'base.html' %}
 
-{% block title %}Lista de Posts{% endblock %}
+{% block title %}Todos los Posts{% endblock %}
 
 {% block content %}
-    <h1>Posts</h1>
-    {% for post in posts %}
-        <div class="post-item">
-            <h2><a href="{{ url_for('post_bp.view_post', post_id=post.id) }}">{{ post.title }}</a></h2>
-            <p>{{ post.content }}</p>
-            <small>Creado el: {{ post.created }}</small>
-            <p>
-                <a href="{{ url_for('post_bp.update_post', post_id=post.id) }}">Editar</a>
-                <form action="{{ url_for('post_bp.delete_post', post_id=post.id) }}" method="post" style="display:inline;">
-                    <button type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar este post?');">Eliminar</button>
-                </form>
-            </p>
-        </div>
-        <hr>
+    <h1>Posts Disponibles</h1>
+    {% if posts %} {# Verifica si hay posts para mostrar #}
+        {% for post in posts %}
+            <div class="post-item" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 15px;">
+                <h2>
+                    <a href="{{ url_for('post_bp.view_post', post_id=post.id) }}">{{ post.title }}</a>
+                </h2>
+                <p>{{ post.content }}</p>
+                <small>Creado el: {{ post.created }}</small>
+                <p>
+                    <a href="{{ url_for('post_bp.update_post', post_id=post.id) }}" style="margin-right: 10px;">Editar</a>
+                    <form action="{{ url_for('post_bp.delete_post', post_id=post.id) }}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar este post? Esta acción es irreversible.');" style="background-color: #f44336; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+                            Eliminar
+                        </button>
+                    </form>
+                </p>
+            </div>
+            <hr>
+        {% endfor %}
     {% else %}
-        <p>No hay posts aún.</p>
-    {% endfor %}
-    <p><a href="{{ url_for('post_bp.create_post') }}">Crear un nuevo post</a></p>
+        <p>No hay posts disponibles todavía. ¡Sé el primero en <a href="{{ url_for('post_bp.create_post') }}">crear uno</a>!</p>
+    {% endif %}
+    <p style="margin-top: 20px;"><a href="{{ url_for('post_bp.create_post') }}">Crear un nuevo post</a></p>
 {% endblock %}

@@ -1,8 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {# Indica que esta plantilla extiende base.html #}
 
-{% block title %}Página de Inicio{% endblock %}
+{% block title %}Página de Inicio de la App{% endblock %} {# Define el título de la página #}
 
-{% block content %}
+{% block content %} {# Define el contenido específico para esta página #}
     <h1>¡Bienvenido a la página de inicio!</h1>
-    <p>Esta es una aplicación básica de Flask.</p>
+    <p>Esta es una aplicación CRUD básica construida con Flask y SQLite.</p>
+    <p>Explora la <a href="{{ url_for('post_bp.list_posts') }}">lista de posts</a> o <a href="{{ url_for('post_bp.create_post') }}">crea uno nuevo</a>.</p>
 {% endblock %}

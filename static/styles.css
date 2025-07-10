@@ -5,16 +5,41 @@ body {
     margin: 0;
     padding: 20px;
 }
-
-h1 {
-    color: #00b306;
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
 }
-
-p {
-    font-size: 18px;
+nav li {
+    float: left;
 }
-
-tr.htmx-swapping td {
-  opacity: 0;
-  transition: opacity 1s ease-out;
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+nav li a:hover {
+    background-color: #111;
+}
+.content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.post-item {
+    margin-bottom: 20px;
+}
+.post-item h2 a {
+    color: #007bff;
+    text-decoration: none;
+}
+.post-item h2 a:hover {
+    text-decoration: underline;
 }
